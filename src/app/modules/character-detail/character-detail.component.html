@@ -1,0 +1,19 @@
+<section class="characterdetail" *ngIf="!isLoading">
+  <div class="picture">
+    <img src="{{ characterDetail.thumbnail.path}}.{{ characterDetail.thumbnail.extension}}"
+      alt="{{ characterDetail.name}} Picture">
+  </div>
+  <div class="content">
+    <div class="back" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i>
+      <small>Back to Home</small>
+    </div>
+    <h1>{{ characterDetail.name }}</h1>
+    <p>{{ characterDetail.description ? characterDetail.description : 'No description found' }}</p>
+    <h1 class="second-title">Comics</h1>
+    <div class="comics">
+      <app-comic-card *ngFor="let c of comicsList" [image]="c.thumbnail.path" [extension]="c.thumbnail.extension"
+        [title]="c.title"></app-comic-card>
+    </div>
+  </div>
+</section>
